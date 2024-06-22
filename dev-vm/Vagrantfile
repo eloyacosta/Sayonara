@@ -1,0 +1,37 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+  
+  config.vm.define "dev-vm" do |dev|
+      
+      dev.vm.box = "Centos6.7"
+        
+      dev.vm.provider "virtualbox" do |v|
+          v.memory = 2048
+          v.cpus = 2
+      end
+ 	    
+      dev.vm.hostname = "dev-vm"
+      dev.vm.network :private_network, ip: "192.168.100.3"
+#      dev.vm.network "public_network", bridge: [
+#		     "en0: Wi-Fi (AirPort)",
+#		     "en1: Thunderbolt 1",
+#		     "en2: Thunderbolt 2",
+#		     ]
+
+      dev.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "/tmp/host.pubkey", preserve_order: true
+      dev.vm.provision "file", source: "rsyncd.conf", destination: "/tmp/rsyncd.conf", preserve_order: true
+      dev.vm.provision "file", source: "rsyncd.secrets", destination: "/tmp/rsyncd.secrets", preserve_order: true
+      dev.vm.provision "file", source: "rsync", destination: "/tmp/rsync", preserve_order: true
+      dev.vm.provision "file", source: "~/.gitconfig", destination: "/tmp/.gitconfig", preserve_order: true
+      dev.vm.provision "shell", path: "provision.sh", args: ENV['GITPASS']
+
+  end
+  config.vm.synced_folder "../", "/root/sayonara"
+  config.vm.synced_folder "~/sayonara.data", "/mnt"
+
+end
+
+
+
