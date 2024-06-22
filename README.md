@@ -1,6 +1,6 @@
 # Sayonara
 
-Sayonara is a tool that automates data migration form **MAD** into the new **IDEA Storage** solutions, CloudPools or CloudBucket (CloudBucket option comming soon).
+Sayonara is a tool for automating data migration form **MAD** into the new **IDEA Storage** solutions, CloudPools or CloudBucket (CloudBucket option comming soon).
 
 There are two main software components:
 
