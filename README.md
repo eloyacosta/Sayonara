@@ -83,4 +83,4 @@ There will be an article on the usage soon. There's a help option on the sayonar
         status              Show the status of a job
         resume              Resume and heal and existing job
         kill                Kill a job
-# Sayonara
+
