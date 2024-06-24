@@ -46,10 +46,6 @@ It's necessary to create a SSH trust relationship, so the sayonara CLI is able t
 
 We suggest to install the tool as root, and to clone the Git repo on /root/sayonara. If the tool is installed on other path, the config files would have to be changed accordingly.
 
-``# cd ~``
-
-``# git clone https://gitlab.partners.org/ez957/sayonara.git``
-
 Please, note that the repository has to be cloned on every brick host, so the sayonara_agent.sh and .conf file are installed.
 
 **Initialize sayonara database**
